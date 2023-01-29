@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table {
+  margin: 50px;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  height: 56px;
+  padding: 5px 15px;
+  text-align: center;
+  border: 2px solid #4f4d51;
+}
+
+table td:nth-child(1) {
+  width: 80px;
+}
+
+table tbody td:not(:nth-child(1)) {
+  border-bottom: 2px solid #c0bbb4;
+}
+
+table td:nth-child(even),
+table thead th:nth-child(even) {
+  background-color: #f1efe8;
+}
+
+table tbody tr:last-of-type,
+table thead th {
+  border-bottom: 3px solid #4f4d51;
+}
+
+table input {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  border: 0px;
+  height: 30px;
+  font-size: 24px;
+}
+
+table td:nth-child(even) input,
+table thead th:nth-child(even) input {
+  background-color: #fff;
+}
+
+table td:nth-child(odd) input,
+table thead th:nth-child(odd) input {
+  background-color: #f1efe8;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: #eee;
+} */
+
+/* input:focus{
+    outline: none;
+} */
+
+.blue {
+  fill: #b6e3f3;
+}

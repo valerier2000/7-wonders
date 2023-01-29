@@ -1,4 +1,5 @@
 import React from "react";
+import { GiEgyptianWalk } from "react-icons/gi";
 
 function WonderHeader(props) {
   function makePlayerNames() {
@@ -18,7 +19,9 @@ function WonderHeader(props) {
   return (
     <thead>
       <tr>
-        <th>Type/Name</th>
+        <th>
+          <GiEgyptianWalk size={40} color="#4f4d51" />
+        </th>
         {makePlayerNames()}
       </tr>
     </thead>
