@@ -19,7 +19,7 @@ function Main() {
   }
 
   return (
-    <div>
+    <div className="main">
       <PlayerSelect numPlayers={numPlayers} setNumPlayers={setNumPlayers} />
 
       <CustomTable isCalculated={isCalculated} numPlayers={numPlayers} />
