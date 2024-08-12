@@ -10,8 +10,8 @@ import { TbCircle } from "react-icons/tb";
 import { TbTriangle } from "react-icons/tb";
 import { TbStar } from "react-icons/tb";
 
-function CustomTable(props) {
-  const numberOfPlayers = 4;
+function CustomTable({ isCalculated, numPlayers }) {
+  const numberOfPlayers = numPlayers;
   const [users, setUsers] = useState(makeUsers());
 
   function makeUsers() {
