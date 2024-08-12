@@ -23,8 +23,10 @@ function Main() {
       <PlayerSelect numPlayers={numPlayers} setNumPlayers={setNumPlayers} />
 
       <CustomTable isCalculated={isCalculated} numPlayers={numPlayers} />
-      <button onClick={calculate}>Who won?</button>
-      <button onClick={clear}>Clear</button>
+      <div className="buttons">
+        <button onClick={calculate}>Who won?</button>
+        <button onClick={clear}>Clear</button>
+      </div>
     </div>
   );
 }
