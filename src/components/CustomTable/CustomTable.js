@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import WonderHeader from "./WonderHeader";
 import WonderFooter from "./WonderFooter";
 import "./CustomTable.css";
@@ -12,20 +12,45 @@ import { TbStar } from "react-icons/tb";
 
 function CustomTable(props) {
   const numberOfPlayers = 4;
+  const [users, setUsers] = useState(makeUsers());
+
+  function makeUsers() {
+    return [{}, {}, {}, {}, {}];
+  }
 
   const categories = [
-    <BiPyramid size={40} color="#F6C461" />,
-    <BsCoin size={40} color="#FFBC15" />,
-    <GiCrossedSwords size={40} color="#F23E50" />,
-    <TbRectangleVertical
-      size={30}
-      color="#4f4d51"
-      bgColor="#00aee2"
-      fill="#B9E1F1"
-    />,
-    <TbCircle size={30} color="#4f4d51" bgColor="#FFB722" fill="#FFE3C9" />,
-    <TbTriangle size={30} color="#4f4d51" bgColor="#5DB76C" fill="#CEE4C9" />,
-    <TbStar size={30} color="#4f4d51" bgColor="#8C86C0" fill="#D2D2E9" />,
+    {
+      name: "wonder",
+      icon: <BiPyramid size={40} color="#F6C461" />,
+    },
+    {
+      name: "coins",
+      icon: <BsCoin size={40} color="#FFBC15" />,
+    },
+    {
+      name: "war",
+      icon: <GiCrossedSwords size={40} color="#F23E50" />,
+    },
+    {
+      name: "blue",
+      icon: <TbRectangleVertical size={30} color="#4f4d51" fill="#B9E1F1" />,
+      bgColor: "#00aee2",
+    },
+    {
+      name: "yellow",
+      icon: <TbCircle size={30} color="#4f4d51" fill="#FFE3C9" />,
+      bgColor: "#FFB722",
+    },
+    {
+      name: "green",
+      icon: <TbTriangle size={30} color="#4f4d51" fill="#CEE4C9" />,
+      bgColor: "#5DB76C",
+    },
+    {
+      name: "purple",
+      icon: <TbStar size={30} color="#4f4d51" fill="#D2D2E9" />,
+      bgColor: "#8C86C0",
+    },
   ];
 
   function makeBody() {
@@ -34,26 +59,33 @@ function CustomTable(props) {
         <tr>
           <td
             style={{
-              backgroundColor: category.props.bgColor,
-              fill: category.props.fill,
+              backgroundColor: category.bgColor,
             }}
           >
-            {category}
+            {category.icon}
           </td>
-          {makePointFields()}
+          {makePointFields(category)}
         </tr>
       );
     });
     return <tbody>{rows}</tbody>;
   }
 
-  function makePointFields() {
+  function makePointFields(props) {
     const pointFields = [];
 
     for (let i = 0; i < numberOfPlayers; i++) {
+      function handleOnChange(event) {
+        setUsers((prevUsers) => {
+          const user = prevUsers[i];
+          user[event.target.name] = event.target.value;
+          return prevUsers;
+        });
+      }
+
       const item = (
         <td>
-          <input type="number" />
+          <input type="number" name={props.name} onChange={handleOnChange} />
         </td>
       );
       pointFields.push(item);
@@ -66,7 +98,7 @@ function CustomTable(props) {
     <table>
       <WonderHeader numberOfPlayers={numberOfPlayers} />
       {makeBody()}
-      <WonderFooter numberOfPlayers={numberOfPlayers} />
+      <WonderFooter numberOfPlayers={numberOfPlayers} usersArray={users} />
     </table>
   );
 }

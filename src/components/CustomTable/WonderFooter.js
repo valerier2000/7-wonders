@@ -4,9 +4,15 @@ import { TbSum } from "react-icons/tb";
 function WonderFooter(props) {
   function makeResultLabels() {
     const resultLabels = [];
-
+    console.log("Footer");
     for (let i = 0; i < props.numberOfPlayers; i++) {
-      const item = <td>333</td>;
+      const user = props.usersArray[i];
+      console.log(user);
+      const result = Object.values(user).reduce((result, currentValue) => {
+        return (result += +currentValue);
+      }, 0);
+
+      const item = <td>{result}</td>;
       resultLabels.push(item);
     }
     return resultLabels;
