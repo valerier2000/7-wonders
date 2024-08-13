@@ -11,9 +11,6 @@ function PlayerSelect({ numPlayers, setNumPlayers }) {
     <div>
       <label htmlFor="players">Select number of players: </label>
       <select id="players" value={numPlayers} onChange={handleChange}>
-        <option value="" disabled>
-          Select
-        </option>
         {playerNumbers.map((number) => (
           <option key={number} value={number}>
             {number}
