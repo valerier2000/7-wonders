@@ -15,7 +15,7 @@ function CustomTable({ isCalculated, numPlayers }) {
   const [users, setUsers] = useState(makeUsers());
 
   function makeUsers() {
-    return [{}, {}, {}, {}, {}];
+    return [{}, {}, {}, {}, {}, {}, {}];
   }
 
   const categories = [
@@ -75,11 +75,12 @@ function CustomTable({ isCalculated, numPlayers }) {
     const pointFields = [];
 
     for (let i = 0; i < numberOfPlayers; i++) {
-      function handleOnChange(event) {
+      function handleOnChange(event, i) {
+        const { name, value } = event.target;
         setUsers((prevUsers) => {
-          const user = prevUsers[i];
-          user[event.target.name] = event.target.value;
-          return prevUsers;
+          const updatedUsers = [...prevUsers];
+          updatedUsers[i] = { ...updatedUsers[i], [name]: value };
+          return updatedUsers;
         });
       }
 
