@@ -1,11 +1,11 @@
 import React from "react";
 import { GiEgyptianWalk } from "react-icons/gi";
 
-function WonderHeader(props) {
+function WonderHeader({ numberOfPlayers }) {
   function makePlayerNames() {
     const playerNames = [];
 
-    for (let i = 0; i < props.numberOfPlayers; i++) {
+    for (let i = 0; i < numberOfPlayers; i++) {
       const item = (
         <th>
           <input type="text" />
