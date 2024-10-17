@@ -5,10 +5,12 @@ import "./WonderTable.css";
 import { BiPyramid } from "react-icons/bi";
 import { BsCoin } from "react-icons/bs";
 import { GiCrossedSwords } from "react-icons/gi";
-import { TbRectangleVertical } from "react-icons/tb";
-import { TbCircle } from "react-icons/tb";
-import { TbTriangle } from "react-icons/tb";
-import { TbStar } from "react-icons/tb";
+import {
+  TbRectangleVertical,
+  TbCircle,
+  TbTriangle,
+  TbStar,
+} from "react-icons/tb";
 
 function WonderTable({ isCalculated, numPlayers }) {
   const numberOfPlayers = numPlayers;
