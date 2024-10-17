@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import WonderHeader from "./WonderHeader";
 import WonderFooter from "./WonderFooter";
-import "./CustomTable.css";
+import "./WonderTable.css";
 import { BiPyramid } from "react-icons/bi";
 import { BsCoin } from "react-icons/bs";
 import { GiCrossedSwords } from "react-icons/gi";
@@ -10,7 +10,7 @@ import { TbCircle } from "react-icons/tb";
 import { TbTriangle } from "react-icons/tb";
 import { TbStar } from "react-icons/tb";
 
-function CustomTable({ isCalculated, numPlayers }) {
+function WonderTable({ isCalculated, numPlayers }) {
   const numberOfPlayers = numPlayers;
   const [users, setUsers] = useState(makeUsers());
 
@@ -56,7 +56,7 @@ function CustomTable({ isCalculated, numPlayers }) {
   function makeBody() {
     const rows = categories.map((category) => {
       return (
-        <tr>
+        <tr key={category.name}>
           <td
             style={{
               backgroundColor: category.bgColor,
@@ -104,4 +104,4 @@ function CustomTable({ isCalculated, numPlayers }) {
   );
 }
 
-export default CustomTable;
+export default WonderTable;

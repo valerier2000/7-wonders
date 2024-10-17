@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CustomTable from "./CustomTable/CustomTable";
+import WonderTable from "./WonderTable/WonderTable";
 import PlayerSelect from "./PlayerSelect";
 
 function Main() {
@@ -8,12 +8,14 @@ function Main() {
 
   function calculate() {
     setIsCalculated((prevIsCalculated) => {
+      console.log("calculated");
       return true;
     });
   }
 
   function clear() {
     setIsCalculated((prevIsCalculated) => {
+      console.log("cleared");
       return false;
     });
   }
@@ -22,7 +24,7 @@ function Main() {
     <div className="main">
       <PlayerSelect numPlayers={numPlayers} setNumPlayers={setNumPlayers} />
 
-      <CustomTable isCalculated={isCalculated} numPlayers={numPlayers} />
+      <WonderTable isCalculated={isCalculated} numPlayers={numPlayers} />
       <div className="buttons">
         <button onClick={calculate}>Who won?</button>
         <button onClick={clear}>Clear</button>

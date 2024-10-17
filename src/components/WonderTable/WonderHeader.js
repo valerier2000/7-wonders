@@ -7,7 +7,7 @@ function WonderHeader({ numberOfPlayers }) {
 
     for (let i = 0; i < numberOfPlayers; i++) {
       const item = (
-        <th>
+        <th key={`player-${i}`}>
           <input type="text" />
         </th>
       );
@@ -29,3 +29,25 @@ function WonderHeader({ numberOfPlayers }) {
 }
 
 export default WonderHeader;
+
+// import React from "react";
+// import { GiEgyptianWalk } from "react-icons/gi";
+
+// function WonderHeader({ numberOfPlayers }) {
+//   return (
+//     <thead>
+//       <tr>
+//         <th>
+//           <GiEgyptianWalk size={40} color="#4f4d51" />
+//         </th>
+//         {Array.from({ length: numberOfPlayers }).map((_, index) => (
+//           <th key={index}>
+//             <input type="text" />
+//           </th>
+//         ))}
+//       </tr>
+//     </thead>
+//   );
+// }
+
+// export default WonderHeader;
