@@ -18,6 +18,10 @@ table td {
   border: 2px solid #4f4d51;
 }
 
+table td svg {
+  vertical-align: middle;
+}
+
 table td:nth-child(1) {
   width: 80px;
 }
