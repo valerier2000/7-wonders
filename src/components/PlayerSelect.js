@@ -1,7 +1,11 @@
 import React from "react";
+import { MIN_PLAYERS, MAX_PLAYERS } from "./../utils/constants";
 
 function PlayerSelect({ numPlayers, setNumPlayers }) {
-  const playerNumbers = [3, 4, 5, 6, 7];
+  const playersNumber = Array.from(
+    { length: MAX_PLAYERS - MIN_PLAYERS + 1 },
+    (_, i) => MIN_PLAYERS + i
+  );
 
   function handleChange(e) {
     setNumPlayers(e.target.value);
@@ -11,7 +15,7 @@ function PlayerSelect({ numPlayers, setNumPlayers }) {
     <div>
       <label htmlFor="players">Select number of players: </label>
       <select id="players" value={numPlayers} onChange={handleChange}>
-        {playerNumbers.map((number) => (
+        {playersNumber.map((number) => (
           <option key={number} value={number}>
             {number}
           </option>
