@@ -12,7 +12,7 @@ function WonderFooter({ numberOfPlayers, playersArray }) {
         return (result += +currentValue);
       }, 0);
 
-      const item = <td>{result}</td>;
+      const item = <td key={`result-${i}`}>{result}</td>;
       resultLabels.push(item);
     }
     return resultLabels;

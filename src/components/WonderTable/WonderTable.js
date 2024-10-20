@@ -89,7 +89,7 @@ function WonderTable({ isCalculated, numPlayers }) {
       }
 
       const inputField = (
-        <td>
+        <td key={`${category.name}-player-${i}`}>
           <input
             type="number"
             name={category.name}
