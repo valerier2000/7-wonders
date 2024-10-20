@@ -1,14 +1,14 @@
 import React from "react";
 import { TbSum } from "react-icons/tb";
 
-function WonderFooter(props) {
+function WonderFooter({ numberOfPlayers, playersArray }) {
   function makeResultLabels() {
     const resultLabels = [];
-    console.log("Footer");
-    for (let i = 0; i < props.numberOfPlayers; i++) {
-      const user = props.usersArray[i];
-      console.log(user);
-      const result = Object.values(user).reduce((result, currentValue) => {
+    // console.log("Footer");
+    for (let i = 0; i < numberOfPlayers; i++) {
+      const player = playersArray[i];
+      // console.log(player);
+      const result = Object.values(player).reduce((result, currentValue) => {
         return (result += +currentValue);
       }, 0);
 

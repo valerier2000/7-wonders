@@ -13,14 +13,13 @@ import {
 } from "react-icons/tb";
 
 function WonderTable({ isCalculated, numPlayers }) {
-  const numberOfPlayers = numPlayers;
-  const [users, setUsers] = useState(makeUsers());
+  const [players, setPlayers] = useState(createPlayers());
 
-  function makeUsers() {
+  function createPlayers() {
     return [{}, {}, {}, {}, {}, {}, {}];
   }
 
-  const categories = [
+  const scoringCategories = [
     {
       name: "wonder",
       icon: <BiPyramid size={40} color="#F6C461" />,
@@ -55,8 +54,8 @@ function WonderTable({ isCalculated, numPlayers }) {
     },
   ];
 
-  function makeBody() {
-    const rows = categories.map((category) => {
+  function generateTableBody() {
+    const rows = scoringCategories.map((category) => {
       return (
         <tr key={category.name}>
           <td
@@ -66,32 +65,39 @@ function WonderTable({ isCalculated, numPlayers }) {
           >
             {category.icon}
           </td>
-          {makePointFields(category)}
+          {generatePointsInputFields(category)}
         </tr>
       );
     });
     return <tbody>{rows}</tbody>;
   }
 
-  function makePointFields(props) {
+  function generatePointsInputFields(category) {
     const pointFields = [];
 
-    for (let i = 0; i < numberOfPlayers; i++) {
-      function handleOnChange(event, i) {
+    for (let i = 0; i < numPlayers; i++) {
+      function handleInputChange(event, i) {
         const { name, value } = event.target;
-        setUsers((prevUsers) => {
+        setPlayers((prevUsers) => {
           const updatedUsers = [...prevUsers];
+          console.log("updatedUsers", updatedUsers);
           updatedUsers[i] = { ...updatedUsers[i], [name]: value };
+          console.log("updatedUsers after", updatedUsers[i]);
+
           return updatedUsers;
         });
       }
 
-      const item = (
+      const inputField = (
         <td>
-          <input type="number" name={props.name} onChange={handleOnChange} />
+          <input
+            type="number"
+            name={category.name}
+            onChange={handleInputChange}
+          />
         </td>
       );
-      pointFields.push(item);
+      pointFields.push(inputField);
     }
 
     return pointFields;
@@ -99,9 +105,9 @@ function WonderTable({ isCalculated, numPlayers }) {
 
   return (
     <table>
-      <WonderHeader numberOfPlayers={numberOfPlayers} />
-      {makeBody()}
-      <WonderFooter numberOfPlayers={numberOfPlayers} usersArray={users} />
+      <WonderHeader numberOfPlayers={numPlayers} />
+      {generateTableBody()}
+      <WonderFooter numberOfPlayers={numPlayers} playersArray={players} />
     </table>
   );
 }
